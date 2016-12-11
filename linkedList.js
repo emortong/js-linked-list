@@ -53,24 +53,32 @@ function linkedListGenerator(){
   }
 
   function remove(number) {
-   // find the node and keep track of the prev node, when found update prev node's
-   // next to point to the next node referenced by node to be deleted
-   // delete found node
+
+   // prevNode:  { value: 'mozilla.org', next: { value: 'eff.org', next: { value: 'icann.org', next: null } } }
+   // toBeRemoved: { value: 'eff.org', next: { value: 'icann.org', next: null } }
+   // nextNode: { value: 'icann.org', next: null }
    var prevNode = get(number-1);
    var toBeRemoved = get(number)
    var nextNode = get(number+1);
-   console.log('prevNode: ', prevNode);
-   console.log('toBeRemoved: ', toBeRemoved);
+
+   if(number === 0) {
+    head = nextNode
+   }
+
+
 
    if(toBeRemoved.next === null) {
     tail = prevNode;
-   } else {
-      prevNode.next = nextNode.next;
-    }
-  }
-
-
-
+    prevNode.next = null
+    console.log('tail: ', tail);
+   } else if(!toBeRemoved){
+      return false;
+    } else if(!nextNode){
+      prevNode.next = null
+      } else {
+        prevNode.next = nextNode;
+      }
+   }
 
 
   function insert(value, number) {}
@@ -85,3 +93,18 @@ function linkedListGenerator(){
     insert: insert
   }
 }
+
+var linkedList = linkedListGenerator()
+linkedList.add('Ready Player One');
+linkedList.add('1982');
+linkedList.add('Neuromancer');
+linkedList.add('Snow Crash');
+console.log("get1",linkedList.get(0))
+console.log("get2",linkedList.get(2))
+console.log(linkedList.remove(2))
+console.log("get3", linkedList.get(0))
+console.log(linkedList.remove(2))
+console.log("get4", linkedList.get(2))
+console.log("get5", linkedList.remove())
+
+
