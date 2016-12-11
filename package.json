@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/devleague/js-linked-list"
+    "url": "git+https://github.com/devleague/js-linked-list.git"
   },
   "author": "Dev League LLC",
   "license": "MIT",
@@ -23,5 +23,13 @@
     "chai": "^2.3.0",
     "mocha": "^2.2.4",
     "sinon": "^1.14.1"
-  }
+  },
+        "xo": {
+    "esnext": true,
+    "space": true,
+    "globals": [
+      "window"
+    ]
+  },
+  "keywords": []
 }
