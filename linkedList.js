@@ -54,9 +54,6 @@ function linkedListGenerator(){
 
   function remove(number) {
 
-   // prevNode:  { value: 'mozilla.org', next: { value: 'eff.org', next: { value: 'icann.org', next: null } } }
-   // toBeRemoved: { value: 'eff.org', next: { value: 'icann.org', next: null } }
-   // nextNode: { value: 'icann.org', next: null }
    var prevNode = get(number-1);
    var toBeRemoved = get(number)
    var nextNode = get(number+1);
@@ -64,8 +61,6 @@ function linkedListGenerator(){
    if(number === 0) {
     head = nextNode
    }
-
-
 
    if(toBeRemoved.next === null) {
     tail = prevNode;
@@ -81,7 +76,43 @@ function linkedListGenerator(){
    }
 
 
-  function insert(value, number) {}
+  function insert(value, number) {
+
+  var prevs = get(number-1)
+  var toBePlaced = get(number);
+  var newNode;
+
+  newNode = {
+      value: value,
+      next: toBePlaced
+  }
+
+  if(number === 0) {
+    head = newNode;
+  } else if(!toBePlaced) {
+    return false;
+  } else {
+    prevs.next = newNode;
+  }
+
+    console.log('newNode: ', newNode);
+
+// instructions say to not append at the last index, but tests ask you
+// to append, and dont test that specific instruction
+
+//   if(toBePlaced.next === null) {
+//     return false;
+//   } else {
+//     newNode = {
+//       value: value,
+//       next: toBePlaced
+//     }
+//     prevs.next = newNode;
+//     console.log('newNode: ', newNode);
+//   }
+// }
+
+}
 
 
   return {
@@ -94,17 +125,8 @@ function linkedListGenerator(){
   }
 }
 
-var linkedList = linkedListGenerator()
-linkedList.add('Ready Player One');
-linkedList.add('1982');
-linkedList.add('Neuromancer');
-linkedList.add('Snow Crash');
-console.log("get1",linkedList.get(0))
-console.log("get2",linkedList.get(2))
-console.log(linkedList.remove(2))
-console.log("get3", linkedList.get(0))
-console.log(linkedList.remove(2))
-console.log("get4", linkedList.get(2))
-console.log("get5", linkedList.remove())
+
+
+
 
 
